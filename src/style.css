@@ -1,0 +1,122 @@
+
+
+   
+  /* .logo {
+
+    height: 40px;
+    width: 120px;
+    background-image: url('./vendors/logo2.jpeg');
+    background-size: contain;
+    
+}  */
+
+
+.search-icon{
+
+    transform: translatex(-210%);
+}
+
+.navbar-search{
+    flex-grow: 1;
+    border-radius: 20px;
+}
+
+.sign-up{
+    
+    
+}
+.login-form{
+    background-color:azure;
+    height: 400px;
+    width: 500px;
+}
+.input-form{
+    background-color: azure;
+}
+
+.navbar-icon{
+   display: none;
+}
+
+.toggle-body{
+    display: none;
+}
+
+.heros-one{
+    background-image: url(./vendors/Fashion.jpeg);
+    width: 900px;
+    height: 400px;
+    background-size: cover;
+}
+
+.main-footar{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+   padding-bottom: 2rem;
+
+}
+
+.about{
+
+    text-align: center;
+    margin-right: 2rem;
+}
+.services{
+    text-align: center;
+    margin-right: 2rem;
+}
+.contact{
+    
+}
+.reserved{
+    background-color: gray;
+    color: black;
+
+}
+@media screen and (max-width:576px) { 
+    
+    .navbar-icon{
+        margin-right: 1rem;
+        display: block;
+        visibility: visible;
+        color: black;
+    }
+    .logo{
+        padding-left: 1rem;
+        display: flex;
+    }
+
+    .main-nav{
+       display: flex;
+       
+    
+      
+    }
+    .navbar-search{ 
+    
+      display: flex;
+      margin: 2rem;
+        
+    }
+    .search-icon{
+       transform: translate(150%);
+    }
+    
+    .categories{
+        display: block;
+        width: 50vh;
+        height: 75vh;
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+      
+    
+    }
+
+    .toggle-body{
+        width: 50vh;
+    }
+
+}
