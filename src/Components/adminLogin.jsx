@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = (props) => {
+const AdminLogin = (props) => {
     let navigate = useNavigate()
+
     const [forgotPassword, setForgotPassword] = useState(false)
+
     let [formData, setformData] = useState({
 
         email: "",
@@ -33,7 +35,7 @@ const LoginForm = (props) => {
         try {
             result = await axios({
                 method: "post",
-                url: "http://localhost:2004/LoginForm",
+                url: "http://localhost:2004/adminLogin",
                 data: formData
 
             })
@@ -46,12 +48,10 @@ const LoginForm = (props) => {
                 setMessageColor("success")
 
             } else {
-
                 setStatus(true)
                 closePopUp()
                 setMessage("unable to submit data")
                 setMessageColor("danger")
-
             }
             localStorage.setItem("myToken", result.data.token)
             console.log(localStorage.getItem("myToken"))
@@ -69,7 +69,18 @@ const LoginForm = (props) => {
         navigate("/")
 
     }
-    
+
+    //   let resetPassword =async(e)=>{
+    //     e.preventDefault();
+    //     let result;
+    //     try {
+    //         result = await axios({
+    //             method: "post",
+    //             url: "http://localhost:2004/",
+    //             data: formData
+
+    //   }
+
     let closePopUp = () => {
 
         setTimeout(() => {
@@ -83,7 +94,7 @@ const LoginForm = (props) => {
 
             <form onSubmit={handleSubmit} className=" d-flex flex-column align-items-center justify-content-center container my-5 px-5 ">
                 <div className=" login-form shadow-lg px-5 py-3 ">
-                    <h3 className="text-center p-1">Login Form</h3>
+                    <h3 className="text-center p-1"> Admin Login</h3>
                     <div data-mdb-input-init className="  form-outline mb-4">
                         <label className="form-label" htmlFor="form2Example1">Email address</label>
                         <input onChange={handleChange} type="email" id="email" name="email" className="form-control" value={formData.email} />
@@ -131,7 +142,7 @@ const LoginForm = (props) => {
                     </div> : null
             }
 
-         {
+            {
                 forgotPassword ?
                     <div className=" mt-3 p-2 w-50 position-absolute start-50 top-50 z-3 translate-middle-x bg-light  text-dark">
                         <div className="form-control p-3 px-4">
@@ -143,11 +154,11 @@ const LoginForm = (props) => {
                             <button className=" m-3 btn btn-success"> Submit</button>
                         </div>
 
-                    </div> : LoginForm
-            } 
+                    </div> : AdminLogin
+            }
 
         </>
     );
 }
 
-export default LoginForm
+export default AdminLogin

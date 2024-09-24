@@ -9,8 +9,14 @@
     background-size: contain;
     
 }  */
+  .body{
+    background-color:  rgb(197, 207, 207);
+  }
 
-
+.Header{
+    background-color: rgb(178, 192, 192) ;
+    z-index: 999999;
+}
 .search-icon{
 
     transform: translatex(-210%);
@@ -26,14 +32,18 @@
     
 }
 .login-form{
-    background-color:azure;
-    height: 400px;
+    background-color: rgb(155, 163, 163);
+    height: 420px;
     width: 500px;
 }
 .input-form{
-    background-color: azure;
+    background-color: rgb(155, 163, 163);
+    
 }
-
+.close-outline{
+    display: none;
+    visibility: hidden;
+}
 .navbar-icon{
    display: none;
 }
@@ -42,12 +52,26 @@
     display: none;
 }
 
-.heros-one{
+.user-dropdown{
+    top: 10;
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+    gap: 4;
+    background-color: rgb(176, 189, 189) ;
+    color: black;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    z-index: 999999999;
+
+}
+
+/* .heros-one{
     background-image: url(./vendors/Fashion.jpeg);
     width: 900px;
     height: 400px;
     background-size: cover;
-}
+} */
 
 .main-footar{
     display: grid;
@@ -69,9 +93,12 @@
     
 }
 .reserved{
-    background-color: gray;
+    background-color:  rgb(155, 163, 163);
     color: black;
 
+}
+.Top-deals{
+    background-color: rgba(223, 224, 224, 0.473);
 }
 @media screen and (max-width:576px) { 
     
@@ -88,35 +115,62 @@
 
     .main-nav{
        display: flex;
-       
-    
-      
     }
     .navbar-search{ 
     
-      display: flex;
-      margin: 2rem;
+        display: none;
+        visibility: hidden;
         
     }
     .search-icon{
-       transform: translate(150%);
+      display: none;
+      visibility: hidden;
     }
     
     .categories{
-        display: block;
+        display: none;
         width: 50vh;
         height: 75vh;
-        background-color: black;
-        color: white;
+        background-color: rgb(178, 192, 192);
+        color: black;
         display: flex;
         flex-direction: column;
-        margin-bottom: 10px;
-      
-    
+        text-align: center;
+        padding-top: 2rem;
+        gap: 5;
+        transition: all ease-in 0.ms;
     }
 
-    .toggle-body{
-        width: 50vh;
+
+    .close-outline{
+       display: block;
+       visibility: visible;
+    }
+    .main-footar{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
     }
 
+    .about{
+        
+        padding-bottom: 1.5rem;
+        
+    }
+    .services{
+          padding-bottom: 1.5rem;
+    }
+    .contact{
+
+        padding-bottom: 1.5;
+        text-align: center;
+    }
+}
+
+.dashboard{
+    text-align: center;
+    color: black;
+    margin: 3rem;
+    border: 1px solid black;
+    padding: 2rem;
 }
