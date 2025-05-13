@@ -182,7 +182,7 @@ const InputForm = (props) => {
             {
 
                 status ?
-                    <div className="mt-3 p-2 w-50 position-absolute start-50 top-0 z-3 translate-middle-x bg-light text-center  text-dark  shadow-lg">
+                    <div className="mt-3 p-2 w-50 position-absolute start-50 top-0 z-3 translate-middle-x bg-light text-center  text-dark  shadow-lg z-3">
                         <h4 className={`text-${messageColor}`}>{message}</h4>
                     </div> : null
             }

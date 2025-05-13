@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Admin = (props) => {
+const AdminLogin = (props) => {
     let navigate = useNavigate()
 
-    let [adminData, setAdminData] = useState({
+    const [forgotPassword, setForgotPassword] = useState(false)
 
-        name: "",
+    let [formData, setformData] = useState({
+
         email: "",
         password: "",
 
@@ -21,7 +22,7 @@ const Admin = (props) => {
 
     let handleChange = (e) => {
         let { name, value } = e.target
-        setAdminData((prev) => {
+        setformData((prev) => {
             return { ...prev, [name]: value };
 
         })
@@ -34,8 +35,8 @@ const Admin = (props) => {
         try {
             result = await axios({
                 method: "post",
-                url: "http://localhost:2004/admin",
-                data: adminData
+                url: "http://localhost:2004/adminLogin",
+                data: formData
 
             })
 
@@ -47,28 +48,38 @@ const Admin = (props) => {
                 setMessageColor("success")
 
             } else {
-
                 setStatus(true)
                 closePopUp()
                 setMessage("unable to submit data")
                 setMessageColor("danger")
-
             }
-            // localStorage.setItem("myToken", result.data.token)
-            // console.log(localStorage.getItem("myToken"))
+            localStorage.setItem("myToken", result.data.token)
+            console.log(localStorage.getItem("myToken"))
 
-            // navigate("/account")
+            navigate("/account")
 
         } catch (err) {
             console.log("unable to send data !", err)
         }
 
     }
-    // let handleLogOut = () => {
-    //     localStorage.removeItem("myToken")
-    //     console.log("token has been deleted !")
-    //     navigate("/")
-    // }
+    let handleLogOut = () => {
+        localStorage.removeItem("myToken")
+        console.log("token has been deleted !")
+        navigate("/")
+
+    }
+
+    //   let resetPassword =async(e)=>{
+    //     e.preventDefault();
+    //     let result;
+    //     try {
+    //         result = await axios({
+    //             method: "post",
+    //             url: "http://localhost:2004/",
+    //             data: formData
+
+    //   }
 
     let closePopUp = () => {
 
@@ -82,23 +93,17 @@ const Admin = (props) => {
             {/* Login Form */}
 
             <form onSubmit={handleSubmit} className=" d-flex flex-column align-items-center justify-content-center container my-5 px-5 ">
-                <div className=" login-form shadow-lg px-5 py-4 ">
-                    <h3 className="text-center p-1"> Admin-Registration</h3>
-                    <div data-mdb-input-init className="  form-outline mb-4">
-                        <label className="form-label" htmlFor="form2Example1">Enter Name</label>
-                        <input onChange={handleChange} type="string" id="name" name="name" className="form-control" value={adminData.name} />
-
-                    </div>
-
+                <div className=" login-form shadow-lg px-5 py-3 ">
+                    <h3 className="text-center p-1"> Admin Login</h3>
                     <div data-mdb-input-init className="  form-outline mb-4">
                         <label className="form-label" htmlFor="form2Example1">Email address</label>
-                        <input onChange={handleChange} type="email" id="email" name="email" className="form-control" value={adminData.email} />
+                        <input onChange={handleChange} type="email" id="email" name="email" className="form-control" value={formData.email} />
 
                     </div>
 
-                    <div data-mdb-input-init className="form-outline mb-3">
+                    <div data-mdb-input-init className="form-outline mb-4">
                         <label className="form-label" htmlFor="form2Example2" >Password</label>
-                        <input onChange={handleChange} type="password" name="password" id="password" className="form-control" value={adminData.password} />
+                        <input onChange={handleChange} type="password" name="password" id="password" className="form-control" value={formData.password} />
 
                     </div>
 
@@ -111,11 +116,19 @@ const Admin = (props) => {
                             </div> */}
                         </div>
 
+                        <div className="row">
+                            <div className="col">
+                                <a href="#!" onClick={() => { setForgotPassword(!forgotPassword) }}>Forgot password?</a>
+                            </div>
+                            <div className="col">
+                                <p>Not a member? <Link to="/InputForm">Register</Link></p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="d-flex gap-2  mb-3 justify-content-center">
-                        <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary text-center fw-bolder btn-block mb-4 gap-3 px-4" >Register</button>
-                        {/* <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger text-center fw-bolder btn-block mb-4 gap-3 px-4" onClick={handleLogOut} >Log Out</button> */}
+                    <div className="d-flex gap-3 justify-content-center">
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary text-center fw-bolder btn-block mb-4 gap-3 px-4" >Log in</button>
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger text-center fw-bolder btn-block mb-4 gap-3 px-4" onClick={handleLogOut} >Log Out</button>
                     </div>
                 </div>
 
@@ -129,7 +142,7 @@ const Admin = (props) => {
                     </div> : null
             }
 
-            {/* {
+            {
                 forgotPassword ?
                     <div className=" mt-3 p-2 w-50 position-absolute start-50 top-50 z-3 translate-middle-x bg-light  text-dark">
                         <div className="form-control p-3 px-4">
@@ -141,11 +154,11 @@ const Admin = (props) => {
                             <button className=" m-3 btn btn-success"> Submit</button>
                         </div>
 
-                    </div> : LoginForm
-            } */}
+                    </div> : AdminLogin
+            }
 
         </>
     );
 }
 
-export default Admin
+export default AdminLogin

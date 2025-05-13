@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const AdminLogin = (props) => {
+import Navbar from "../includes/Header";
+const LoginForm = (props) => {
     let navigate = useNavigate()
-
     const [forgotPassword, setForgotPassword] = useState(false)
-
     let [formData, setformData] = useState({
 
         email: "",
@@ -35,7 +33,7 @@ const AdminLogin = (props) => {
         try {
             result = await axios({
                 method: "post",
-                url: "http://localhost:2004/adminLogin",
+                url: "http://localhost:2004/LoginForm",
                 data: formData
 
             })
@@ -48,10 +46,12 @@ const AdminLogin = (props) => {
                 setMessageColor("success")
 
             } else {
+
                 setStatus(true)
                 closePopUp()
                 setMessage("unable to submit data")
                 setMessageColor("danger")
+
             }
             localStorage.setItem("myToken", result.data.token)
             console.log(localStorage.getItem("myToken"))
@@ -70,16 +70,9 @@ const AdminLogin = (props) => {
 
     }
 
-    //   let resetPassword =async(e)=>{
-    //     e.preventDefault();
-    //     let result;
-    //     try {
-    //         result = await axios({
-    //             method: "post",
-    //             url: "http://localhost:2004/",
-    //             data: formData
-
-    //   }
+    let setAlert = () => {
+        alert("hello jayesh !")
+    }
 
     let closePopUp = () => {
 
@@ -88,13 +81,29 @@ const AdminLogin = (props) => {
         }, 5000)
     }
 
+    let submitPassword = () => {
+        if (formData.email.trim() === "" || formData.password.trim() === "") {
+            alert("enter full details")
+        } else {
+            alert("password reset successfully !")
+        }
+    }
+    let ResetPasswordForm = () => {
+        setformData({
+            email: "",
+            password: "",
+        });
+    }
+
+
     return (
         <>
             {/* Login Form */}
+            {/* <Navbar  alert={setAlert}/> */}
 
             <form onSubmit={handleSubmit} className=" d-flex flex-column align-items-center justify-content-center container my-5 px-5 ">
                 <div className=" login-form shadow-lg px-5 py-3 ">
-                    <h3 className="text-center p-1"> Admin Login</h3>
+                    <h3 className="text-center p-1">Login Form</h3>
                     <div data-mdb-input-init className="  form-outline mb-4">
                         <label className="form-label" htmlFor="form2Example1">Email address</label>
                         <input onChange={handleChange} type="email" id="email" name="email" className="form-control" value={formData.email} />
@@ -127,8 +136,8 @@ const AdminLogin = (props) => {
                     </div>
 
                     <div className="d-flex gap-3 justify-content-center">
-                        <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary text-center fw-bolder btn-block mb-4 gap-3 px-4" >Log in</button>
-                        <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger text-center fw-bolder btn-block mb-4 gap-3 px-4" onClick={handleLogOut} >Log Out</button>
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary text-center fw-bolder btn-block mb-4 gap-3 px-4" onClick={submitPassword}>Log in</button>
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-danger text-center fw-bolder btn-block mb-4 gap-3 px-4" onClick={ResetPasswordForm} >Reset</button>
                     </div>
                 </div>
 
@@ -143,22 +152,64 @@ const AdminLogin = (props) => {
             }
 
             {
-                forgotPassword ?
-                    <div className=" mt-3 p-2 w-50 position-absolute start-50 top-50 z-3 translate-middle-x bg-light  text-dark">
-                        <div className="form-control p-3 px-4">
-                            <h3 className="text-center m-2">Reset Password</h3>
-                            <label className="form-label" htmlFor="form2Example1">Email address</label>
-                            <input onChange={handleChange} type="email" id="email" name="email" className="form-control" value={formData.email} />
-                            <label className="form-label mt-2 mb-3" >Enter New Password</label>
-                            <input onChange={handleChange} type="email" id="email" name="email" className="form-control" value={formData.password} />
-                            <button className=" m-3 btn btn-success"> Submit</button>
-                        </div>
+                forgotPassword && (
+                    <div className="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-dark bg-opacity-50 z-3">
+                        <div className="bg-white p-4 rounded shadow-lg w-100" style={{ maxWidth: "400px" }}>
+                            <div className="d-flex justify-content-between align-items-center mb-3">
+                                <h5 className="mb-0">Reset Password</h5>
+                                <button
+                                    type="button"
+                                    className="btn-close"
+                                    onClick={() => setForgotPassword(false)}
+                                    aria-label="Close"
+                                ></button>
+                            </div>
 
-                    </div> : AdminLogin
+                            <div className="mb-3">
+                                <label className="form-label" htmlFor="resetEmail">Email address</label>
+                                <input
+                                    onChange={handleChange}
+                                    type="email"
+                                    id="resetEmail"
+                                    name="email"
+                                    className="form-control"
+                                    value={formData.email}
+                                    required
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label className="form-label" htmlFor="newPassword">New Password</label>
+                                <input
+                                    onChange={handleChange}
+                                    type="password"
+                                    id="newPassword"
+                                    name="password"
+                                    className="form-control"
+                                    value={formData.password}
+                                    required
+                                />
+                            </div>
+
+                            <div className="d-flex  justify-content-center align-items-center gap-3 ">
+                                <button className="btn btn-success" onClick={submitPassword}>
+                                    Submit
+                                </button>
+                                <div className="text-end">
+                                    <button className="btn btn-danger" onClick={ResetPasswordForm}>
+                                        Reset
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                )
             }
+
 
         </>
     );
 }
 
-export default AdminLogin
+export default LoginForm

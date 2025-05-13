@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaOpencart } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md"
 import { FaInstagram } from "react-icons/fa6";
+//import { Link } from "react-router-dom";
 
 const Footar = () => {
+    const [email, setEmail] = useState("");
+
+    const handleSubscribe = () => {
+        if (!email.trim()) {
+            alert("Please enter your email before subscribing.");
+        } else {
+            alert("You have subscribed successfully!");
+            setEmail(""); // clear the input after success
+        }
+    };
+
     return (
         <>
             <footer className="container-fluid text-light bg-dark mt-3 fixed bottom-0 ">
@@ -28,17 +40,24 @@ const Footar = () => {
                         <span className="d-block">International Shipping</span>
                     </div>
 
-                    <div className=" contact">
-                        <h3 className="py-1">Contact Us</h3>
-                        <div className="mb-4 d-flex gap-3 align-items-center px-3">
-                            <span className=""><FaGithub /></span>
-                            <span className=" text-success fs-3rem fw-bolder mr-2"> <FaWhatsapp /></span>
-                            <span className=" fw-bold text-primary fw-bolder mr-2"><MdEmail /></span>
-                            <span className=" fw-bold text-danger mr-2"> <FaInstagram /></span>
+                    <div className=" contact ">
+                        <h3 className="py-1 text-center">Contact Us</h3>
+                        <div className="mb-4 d-flex gap-3 align-items-center justify-content-center px-2">
+                            <h3 className="d-inline fw-bolder"><span className=""><FaGithub /></span></h3>
+                            <h3 className="d-inline fw-bolder"> <span className=" text-success  mr-2"> <FaWhatsapp /></span></h3>
+                            <h3 className="d-inline fw-bolder"> <span className="  text-primary  mr-2"><MdEmail /></span></h3>
+                            <h3 className="d-inline fw-bold"><span className="  text-danger mr-2"> <FaInstagram /></span></h3>
                         </div>
-                        <div className="d-flex ">
-                            <input className="form-control w-50 " placeholder="Enter email" />
-                            <button className="btn btn-primary mx-2 px-1">SUBSCRIBE</button>
+                        <div className="d-flex justify-content-center ">
+                            <input
+                                className="form-control w-50 "
+                                placeholder="Enter email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <button className="btn btn-primary mx-2 px-1"
+                                onClick={handleSubscribe}
+                            >SUBSCRIBE</button>
                         </div>
                     </div>
                 </div>
@@ -48,7 +67,14 @@ const Footar = () => {
                     <p className="mb-2 ">Terms of Use</p>
                     <p className="mb-2">Privacy and Policy</p>
                 </div>
-                <h5 className="text-center">  @ 2024  <FaOpencart /> clickShop. All rights reserved.</h5>
+                <h5
+                    className="text-center"
+                    style={{
+                        fontSize: window.innerWidth < 576 ? '0.8rem' : '1.2rem'
+                    }}
+                >
+                    @ 2024 <FaOpencart /> clickShop. All rights reserved.
+                </h5>
             </div>
 
 
