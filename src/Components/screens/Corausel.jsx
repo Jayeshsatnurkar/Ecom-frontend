@@ -22,7 +22,7 @@ const Carousel = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          
+
         },
       },
       {
@@ -48,35 +48,26 @@ const Carousel = () => {
     Mobile,
     Grocery,
     Electronics,
-    
+
   ];
 
   return (
     <div className="container mt-3">
-      <div 
-        style={{ 
-          width: '100%', 
-          height: '400px', // Ensure full height for the container
-         // overflow: 'hidden', // Ensures no overflow of images
-        }}
-      >
+      <div className="carousel-container">
         <Slider {...settings}>
           {images.map((image, index) => (
-            <div key={index} >
-              <img 
-                src={image} 
-                alt={`Slide ${index + 1}`} 
-                style={{
-                  objectFit: "cover", // Displays the entire image proportionally
-                  height: "400px", // Occupies the full container height
-                  width: "100%", // Occupies the full container width
-                }} 
+            <div key={index}>
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="carousel-image"
               />
             </div>
           ))}
         </Slider>
       </div>
     </div>
+
   );
 };
 

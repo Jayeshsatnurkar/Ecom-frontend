@@ -37,7 +37,7 @@ const ShowGrocery = () => {
         🍎 Flat discounts on daily essentials! Stock up now.
       </div>
 
-      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
         {groceryItems.map((item) => (
           <div key={item.id} className="col">
             <div className="card h-100 shadow-sm">

@@ -55,10 +55,10 @@ const Navbar = ({ alert }) => {
           <div className="" >
             <h3 className="text-primary logo "><FaOpencart /> click<span className="text-dark">Shop</span></h3>
           </div>
-          <form className=" navbar-search flex-md-grow-1  my-2 my-lg-0 outline-dark border-none border-radius-50">
+          <form className=" navbar-search  d-none d-lg-block my-2 my-lg-0 outline-dark border-none border-radius-50">
             <input className="   form-control " type="search" placeholder=" type to search" aria-label="Search" />
           </form>
-          <button className="  search-icon btn btn-outline-none " onClick={handleserach}><FaSearch /> </button>
+          <button className="  search-icon btn btn-outline-none d-none d-lg-block" onClick={handleserach}><FaSearch /> </button>
           <Link to='/'><button className=" d-none d-md-block  fw-bolder btn "><span> <FaHome size={'1.5rem'} /> </span></button></Link>
           <Link to='/cart'><button className=" d-none d-md-block  fw-bolder btn "><span> <FaCartShopping size={'1.5rem'} /></span></button></Link>
 
@@ -72,7 +72,7 @@ const Navbar = ({ alert }) => {
 
 
 
-          <div className="d-row">
+          {/* <div className="d-row">
             {!dropDown && (
               <button
                 className="d-sm-block d-lg-none  border-0 bg-transparent px-2"
@@ -92,14 +92,35 @@ const Navbar = ({ alert }) => {
 
               </span>
             </a>
+            
+          </div> */}
+
+
+
+          <div className="d-flex d-md-none align-items-center gap-3 ms-auto">
+            <button
+                className="d-sm-block d-lg-none  border-0 bg-transparent px-2"
+              onClick={() => setShowMobileSearch(true)}
+              style={{ boxShadow: 'none', outline: 'none' }}
+            >
+              <FaSearch />
+            </button>
+            {!dropDown && (
+              <FaBars
+                className="cursor-pointer"
+                onClick={() => setDropDown(!dropDown)}
+                size={'1.5rem'}
+              />
+            )}
           </div>
+
 
         </div>
       </nav >
 
       {/* Mobile Search Modal */}
-      {showMobileSearch && (
-        <div className="mobile-search-overlay position-fixed top-0 start-0 w-100 h-100 bg-white d-flex flex-column justify-content-center align-items-center z-3">
+      {showMobileSearch &&  (
+        <div className="mobile-search-overlay  position-fixed top-0 start-0 w-100 h-100 bg-white d-flex flex-column justify-content-center align-items-center z-3">
           <input
             type="text"
             className="form-control w-75 mb-3"
@@ -110,7 +131,7 @@ const Navbar = ({ alert }) => {
           <div className="d-flex gap-2">
             <button
               className="btn btn-primary"
-              onClick={ handleserach}
+              onClick={handleserach}
             >
               Search
             </button>
@@ -141,7 +162,7 @@ const Navbar = ({ alert }) => {
         </div>
       </div>
 
-      < div className={mobileMenu ? "categories" : " container-fluid shadow-lg py-3 d-flex justify-content-evenly"} >
+      <div className="d-none d-md-flex container-fluid shadow-lg py-3 justify-content-evenly">
         <Link to='/Fashion' className="fs-6rem fw-medium text-dark text-decoration-none">Fashion </Link>
         <Link to='/Mobiles' href="" className="fs-6rem fw-medium text-dark text-decoration-none" > Mobiles</Link>
         <Link to='/Electronics' href="" className="fs-6rem  fw-medium text-dark text-decoration-none" > Electonics</Link>

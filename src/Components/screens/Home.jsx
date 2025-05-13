@@ -15,75 +15,83 @@ import U1 from '../../vendors/U1.jpeg'
 import U2 from '../../vendors/U2.jpeg'
 import U3 from '../../vendors/U3.jpeg'
 import Carousel from "./Corausel";
+import { useNavigate } from 'react-router-dom';
+
 const Home = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div className=" container mt-3">
-                <Carousel/>
-               
+                <Carousel />
+
                 <div className="container py-2 mt-4 Top-deals ">
                     <h3 className="fs-bolder px-5 py-1">Top Deals</h3>
-                    <div className="row m-4">
-                        <h4 className="text-center fw-bolder mb-4">Latest Fashion </h4>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={F1} alt='' />
-                        </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={F2} alt='' />
-                        </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={F3} alt='' />
-                        </div>
 
-                    </div>
-                    <div className="row m-5">
-                        <h4 className="text-center fw-bolder mb-4">Mobiles </h4>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={M1} alt='' />
+                    <h4 className="text-center fw-bolder mb-4">Latest Fashion</h4>
+                    <div className="row px-2 px-md-5 py-2" onClick={() => navigate('/fashion')} style={{ cursor: 'pointer' }}>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={F1} alt="" style={{ height: '250px' }} />
                         </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={M2} alt='' />
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={F2} alt="" style={{ height: '250px' }} />
                         </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={M3} alt='' />
-                        </div>
-                    </div>
-                    <div className="row m-5">
-                        <h4 className="text-center fw-bolder mb-4">Electronics Items </h4>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={E1} alt='' />
-                        </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={E2} alt='' />
-                        </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={E3} alt='' />
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={F3} alt="" style={{ height: '250px' }} />
                         </div>
                     </div>
-                    <div className="row m-5">
-                        <h4 className="text-center fw-bolder mb-4">Grocery </h4>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={G1} alt='' />
+
+                    <h4 className="text-center fw-bolder mb-4">Mobiles </h4>
+                    <div className="row px-2 px-md-5 py-2" onClick={() => navigate('/mobiles')} style={{ cursor: 'pointer' }}>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={M1} alt="" style={{ height: '250px' }} />
                         </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={G2} alt='' />
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={M2} alt="" style={{ height: '250px' }} />
                         </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={G3} alt='' />
-                        </div>
-                    </div>
-                    <div className="row m-5">
-                        <h4 className="text-center fw-bolder mb-4">Furniture</h4>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={U1} alt='' />
-                        </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={U2} alt='' />
-                        </div>
-                        <div className="col">
-                            <img className=" d-block w-100 h-100" src={U3} alt='' />
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={M3} alt="" style={{ height: '250px' }} />
                         </div>
                     </div>
+
+                    <h4 className="text-center fw-bolder mb-4">Electronics Items</h4>
+                    <div className="row px-2 px-md-5 py-2" onClick={() => navigate('/electronics')} style={{ cursor: 'pointer' }}>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={E1} alt="" style={{ height: '250px' }} />
+                        </div>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={E2} alt="" style={{ height: '250px' }} />
+                        </div>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={E3} alt="" style={{ height: '250px' }} />
+                        </div>
+                    </div>
+
+                    <h4 className="text-center fw-bolder mb-4">Grocery</h4>
+                    <div className="row px-2 px-md-5 py-2" onClick={() => navigate('/grocery')} style={{ cursor: 'pointer' }}>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={G1} alt="" style={{ height: '250px' }} />
+                        </div>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={G2} alt="" style={{ height: '250px' }} />
+                        </div>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={G3} alt="" style={{ height: '250px' }} />
+                        </div>
+                    </div>
+
+                    <h4 className="text-center fw-bolder mb-4">Furniture</h4>
+                    <div className="row px-2 px-md-5 py-2" onClick={() => navigate('/furniture')} style={{ cursor: 'pointer' }}>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={U1} alt="" style={{ height: '250px' }} />
+                        </div>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={U2} alt="" style={{ height: '250px' }} />
+                        </div>
+                        <div className="col-12 col-md-4 mb-3">
+                            <img className="img-fluid w-100 h-100 object-fit-cover" src={U3} alt="" style={{ height: '250px' }} />
+                        </div>
+                    </div>
+
                 </div>
 
             </div >
