@@ -73,7 +73,7 @@ const Footar = () => {
                         fontSize: window.innerWidth < 576 ? '0.8rem' : '1.2rem'
                     }}
                 >
-                    @ 2024 <FaOpencart /> clickShop. All rights reserved.
+                    @ 2025 <FaOpencart /> clickShop. All rights reserved.
                 </h5>
             </div>
 
